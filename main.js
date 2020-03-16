@@ -22,3 +22,12 @@ var cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
 camera.position.z = 5;
+
+//Animate funktion to draw 3D object to scene
+function animate() {
+	requestAnimationFrame( animate );
+    renderer.render( scene, camera );
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+}
+animate();
