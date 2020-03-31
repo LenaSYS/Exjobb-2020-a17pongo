@@ -20,22 +20,27 @@ dft = pd.read_fwf(dataFile, encoding='utf-8')
 dfsort = df.sort_values(by=['Id'])
 
 print("-----------DF-------------")
+
 print(dfsort.columns)
 print(dfsort.head(10))
 
+print("-----------DFT-------------")
 #Changes klimnr column name to Id for easier matching of dataframes
 dft.rename(columns = {'klimnr': 'Id'}, inplace=True)
+
+#Remove unwanted month columns from dataframe, only keeping sum data of year, id and period
+dft.drop(['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'], axis=1, inplace=True)
 
 #Sort values in column Id ascending from .TXT file
 dftsort = dft.sort_values(by=['Id'])
 
-print("-----------DFT-------------")
 print(dftsort.columns)
 print(dftsort.head(10))
 
-#result = dfsort.merge(dftsort, how='left')
+#result = pd.merge(dfsort,dftsort, right_index=True, left_index=True)
+#resort = result.sort_values(by=['Id'])
 print("-----------RESULT-------------")
-#print(result)
+#print(resort)
 
 #print restructured data to json format
-#df.to_json("data/2018_SCB_BEFOLK_MANGD_simplified_data.json", force_ascii=True, orient="records")
+#resort.to_json("data/2018_SCB_BEFOLK_MANGD_simplified_data.json", force_ascii=True, orient="records")
