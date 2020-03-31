@@ -1,6 +1,8 @@
 import pandas as pd
+from geopy.geocoders import Nominatim #external lib for retrieving geolocation information eg. long, lat etc.
 
-dataFile = 'data/2018_SCB_BEFOLK_MANGD_simplified_data.csv'
+dataFile = 'data/SMHI_month_year_normal_61_90_precipitation_mm_ORIGINALDATA.txt'
+stations = 'data/SMHI_metobs_precipitationType24Hours_all_sites_ORIGINALDATA.csv'
 
 #Function for cleaning up empty whitespace from dataset
 def strip(text):
@@ -10,14 +12,30 @@ def strip(text):
         return text
 
 #Read CSV file content and store in dataFrame, also converts City column in data to a new string with no whitespace
-df = pd.read_csv(dataFile, encoding='utf-8', converters = {'City' : strip})
+#df = pd.read_csv(dataFile, encoding='utf-8', converters = {'City' : strip})
+df = pd.read_csv(stations, encoding='utf-8', sep=';')
+dft = pd.read_fwf(dataFile, encoding='utf-8')
 
-#Print to se data result, used for testing
-print(df["Population"]) #before manip
-extr = df.Population.str.replace(',', '')
+#Sort values in column Id ascending from .CSV file
+dfsort = df.sort_values(by=['Id'])
 
-print(extr.astype(int).head(10)) #after manip
-df['Population'] = extr.astype(int) #converting finish manip data to int
+print("-----------DF-------------")
+print(dfsort.columns)
+print(dfsort.head(10))
+
+#Changes klimnr column name to Id for easier matching of dataframes
+dft.rename(columns = {'klimnr': 'Id'}, inplace=True)
+
+#Sort values in column Id ascending from .TXT file
+dftsort = dft.sort_values(by=['Id'])
+
+print("-----------DFT-------------")
+print(dftsort.columns)
+print(dftsort.head(10))
+
+#result = dfsort.merge(dftsort, how='left')
+print("-----------RESULT-------------")
+#print(result)
 
 #print restructured data to json format
-df.to_json("data/2018_SCB_BEFOLK_MANGD_simplified_data.json", force_ascii=True, orient="records")
+#df.to_json("data/2018_SCB_BEFOLK_MANGD_simplified_data.json", force_ascii=True, orient="records")
