@@ -3,13 +3,6 @@ import pandas as pd
 dataFile = 'data/SMHI_month_year_normal_61_90_precipitation_mm_ORIGINALDATA.txt'
 stations = 'data/SMHI_metobs_precipitationType24Hours_all_sites_ORIGINALDATA.csv'
 
-#Function for cleaning up empty whitespace from dataset
-def strip(text):
-    try:
-        return text.strip()
-    except AttributeError:
-        return text
-
 #Read CSV file content and store in dataFrame, also converts City column in data to a new string with no whitespace
 #df = pd.read_csv(dataFile, encoding='utf-8', converters = {'City' : strip})
 df = pd.read_csv(stations, encoding='utf-8', sep=';')
