@@ -37,7 +37,7 @@ mergedData.drop('klimnr', axis=1, inplace=True)
 print(mergedData)
 
 #write restructured data to json format
-mergedData.to_json("data/2018_SCB_BEFOLK_MANGD_simplified_data.json", force_ascii=True, orient="records")
+mergedData.to_json("data/SMHI_merged_simplified_data.json", force_ascii=True, orient="records")
 
 #Code for reading and verifying data in finished JSON file
 #js = pd.read_json("data/2018_SCB_BEFOLK_MANGD_simplified_data.json", encoding='utf-8')
