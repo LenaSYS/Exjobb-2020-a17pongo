@@ -1,5 +1,4 @@
 import pandas as pd
-from geopy.geocoders import Nominatim #external lib for retrieving geolocation information eg. long, lat etc.
 
 dataFile = 'data/SMHI_month_year_normal_61_90_precipitation_mm_ORIGINALDATA.txt'
 stations = 'data/SMHI_metobs_precipitationType24Hours_all_sites_ORIGINALDATA.csv'
