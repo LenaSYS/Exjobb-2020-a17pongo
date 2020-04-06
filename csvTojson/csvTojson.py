@@ -1,3 +1,4 @@
+
 import pandas as pd
 
 dataFile = 'data/SMHI_month_year_normal_61_90_precipitation_mm_ORIGINALDATA.txt'
