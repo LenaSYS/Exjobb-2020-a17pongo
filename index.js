@@ -4,6 +4,7 @@
     This will minimize the potential effect these initial steps can have on the experiments
 */
 
+
 console.log("index.js - Initiating application");
 threejs_init();
 
@@ -47,7 +48,7 @@ function threejs_init(){
 
     //adding a 3D object
     var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
-    var material = new THREE.MeshBasicMaterial( {color: 0x0000ff,wireframe:false} );
+    var material = new THREE.MeshBasicMaterial( {color: 0x0000ff,wireframe:true} );
     var cylinder = new THREE.Mesh( geometry, material );
     scene.add( cylinder );
 
@@ -58,9 +59,15 @@ function threejs_init(){
     light.position.set(0, 0, 6);
     scene.add(light);
 
+	// controls
+    var controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls.update();
+
+
     //Animate funktion to draw 3D object to scene
     function animate() {
         requestAnimationFrame( animate );
+        controls.update();
         renderer.render( scene, camera );
     }
     animate();
