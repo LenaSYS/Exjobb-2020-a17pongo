@@ -5,11 +5,24 @@
 */
 console.log("Threejs artefact - Initiating application");
 
+//function for retrieving data from json file with fetch API
+function fetchData(){
+    fetch('../data/SMHI_merged_simplified_data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+}
+
 /*THREEJS RELATED CODE*/
 
 //Creating a global scene needed for showing anything graphics related
 var scene = new THREE.Scene();
 
+//fetching data before initiating threeJS scene
+fetchData();
 //Function for initiating scene configuration and starting to draw objects to scene
 threejs_init();
 
