@@ -29,7 +29,7 @@ function threejs_init(){
     const renderer = new THREE.WebGLRenderer({ alpha: true, canvas: canvas });
 
     //Adding plane for showing the map as a texture
-    var texture = new THREE.TextureLoader().load( 'img/3_no_ice_clouds_16k_original.jpg' );
+    var texture = new THREE.TextureLoader().load( '../img/3_no_ice_clouds_16k_original.jpg' );
     var pm = new THREE.MeshBasicMaterial({ map: texture });
     var pg = new THREE.PlaneBufferGeometry( 20000, 20000 );
     var mesh = new THREE.Mesh(pg , pm );
