@@ -21,7 +21,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}',
 /*THREEJS RELATED CODE*/
 // Scene Configurations
 
-
+/*Function for giving leaflet some 3D functionality by presenting the 2D map in a plane*/
 function threejs_init(){
     //Setting up threejs
     const FOV = 45;
@@ -38,8 +38,9 @@ function threejs_init(){
     canvas.height = window.innerHeight;
     const renderer = new THREE.WebGLRenderer({ alpha: true, canvas: canvas });
 
-    //Adding plane for showing the leaflet map
-    var pm = new THREE.MeshBasicMaterial({color:0x57a53c});
+    //Adding plane for showing the map as a texture
+    var texture = new THREE.TextureLoader().load( 'img/3_no_ice_clouds_16k_original.jpg' );
+    var pm = new THREE.MeshBasicMaterial({ map: texture });
     var pg = new THREE.PlaneBufferGeometry( 20000, 20000 );
     var mesh = new THREE.Mesh(pg , pm );
     mesh.position.y = - 250;
