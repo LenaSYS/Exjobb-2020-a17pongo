@@ -3,11 +3,7 @@
     create initial setup needed for both artefacts
     This will minimize the potential effect these initial steps can have on the experiments
 */
-
-
-console.log("index.js - Initiating application");
-
-
+console.log("Threejs artefact - Initiating application");
 
 /*THREEJS RELATED CODE*/
 
