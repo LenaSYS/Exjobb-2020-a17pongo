@@ -48,11 +48,22 @@ function threejs_init(){
     scene.add( mesh );
 
     //adding a 3D object
-    var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
-    var material = new THREE.MeshBasicMaterial( {color: 0x0000ff,wireframe:true} );
-    var cylinder = new THREE.Mesh( geometry, material );
-    scene.add( cylinder );
+    //var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
+    //var material = new THREE.MeshBasicMaterial( {color: 0x0000ff,wireframe:true} );
+    //var cylinder = new THREE.Mesh( geometry, material );
+    //scene.add( cylinder );
 
+    //funktion for adding multiple Cylinder 3D objects to scene
+    function addCylinders(){
+        var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
+        var material = new THREE.MeshBasicMaterial( {color: 0x0000ff,wireframe:true} );
+        var cylinder = new THREE.Mesh( geometry, material );
+        scene.add( cylinder );
+    }
+
+    addCylinders();
+
+    camera.position.y = 50;
     camera.position.z = 50;
 
     //adding light source to scene
