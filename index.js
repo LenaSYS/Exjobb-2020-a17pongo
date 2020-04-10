@@ -6,22 +6,17 @@
 
 
 console.log("index.js - Initiating application");
-threejs_init();
 
-/*LEAFLET RELATED CODE*//*
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', 
-    {foo: 'bar', 
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}
-    )
-.addTo(mymap);
-*/
 
 /*THREEJS RELATED CODE*/
-// Scene Configurations
 
-/*Function for giving leaflet some 3D functionality by presenting the 2D map in a plane*/
+//Creating a global scene needed for showing anything graphics related
+var scene = new THREE.Scene();
+
+//Function for initiating scene configuration and starting to draw objects to scene
+threejs_init();
+
 function threejs_init(){
     //Setting up threejs
     const FOV = 45;
@@ -31,7 +26,6 @@ function threejs_init(){
     const NEAR = 0.1;
     const FAR = 10000;
 
-    var scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(FOV, ASPECT, NEAR, FAR);
     var canvas = document.getElementById("map");
     canvas.width = window.innerWidth;
@@ -47,28 +41,7 @@ function threejs_init(){
     mesh.rotation.x = - Math.PI / 2;
     scene.add( mesh );
 
-    //adding a 3D object
-    //var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
-    //var material = new THREE.MeshBasicMaterial( {color: 0x0000ff,wireframe:true} );
-    //var cylinder = new THREE.Mesh( geometry, material );
-    //scene.add( cylinder );
-
-    //funktion for adding multiple Cylinder 3D objects to scene
-    function addCylinders(amount){
-        
-        var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
-        var material = new THREE.MeshBasicMaterial( {color:"rgb(255, 0, 0)",wireframe:true} );
-
-        for(var i=0; i < amount; i++){
-            var cylinder = new THREE.Mesh( geometry, material );
-            cylinder.position.x = Math.random() * 800 - 400;
-            cylinder.position.y = Math.random() * 800 - 400;
-            cylinder.position.z = Math.random() * 800 - 400;
-            scene.add( cylinder );
-        }
-    }
-
-    addCylinders(10);
+    addCylinders(1000);
 
     camera.position.y = 300;
     camera.position.z = 100;
@@ -82,7 +55,6 @@ function threejs_init(){
     var controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.update();
 
-
     //Animate funktion to draw 3D object to scene
     function animate() {
         requestAnimationFrame( animate );
@@ -90,4 +62,19 @@ function threejs_init(){
         renderer.render( scene, camera );
     }
     animate();
+}
+
+//funktion for adding multiple Cylinder 3D objects to scene
+function addCylinders(amount){
+
+    var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
+    var material = new THREE.MeshBasicMaterial( {color:"rgb(255, 0, 0)",wireframe:true} );
+
+    for(var i=0; i < amount; i++){
+        var cylinder = new THREE.Mesh( geometry, material );
+        cylinder.position.x = Math.random() * 800 - 400;
+        cylinder.position.y = Math.random() * 800 - 400;
+        cylinder.position.z = Math.random() * 800 - 400;
+        scene.add( cylinder );
+    }
 }
