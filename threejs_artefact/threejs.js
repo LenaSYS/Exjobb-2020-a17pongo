@@ -12,7 +12,6 @@ function fetchData(){
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     addCylinders(data)
   });
 }
@@ -79,11 +78,40 @@ function threejs_init(){
 function addCylinders(data){
     var material = new THREE.MeshBasicMaterial( {color:"rgb(81, 63, 196)",wireframe:true} );
 
-    for(var i=0; i < data.length; i++){
+    //bottom of sweden
+    for(var i=0; i < 500; i++){
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
-        cylinder.position.x = Math.random() *  -900 + -700;
-        cylinder.position.z = Math.random() *  3000 + 400;
+        cylinder.position.x = Math.random() *  (-600 -700) - 700;
+        cylinder.position.z = Math.random() *  (4500 - 700) - 700;
         scene.add( cylinder );
     }
+
+    //Middle of sweden 1
+    for(var i=500; i < 750; i++){
+        var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
+        var cylinder = new THREE.Mesh( geometry, material );
+        cylinder.position.x = Math.random() *  (-300 - 200) - 200;
+        cylinder.position.z = Math.random() *  (-800 - 600) - 600;
+        scene.add( cylinder );
+    }
+
+    //Middle of sweden 2
+    for(var i=750; i < 1000; i++){
+        var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
+        var cylinder = new THREE.Mesh( geometry, material );
+        cylinder.position.x = Math.random() *  (300 + 200) - 200;
+        cylinder.position.z = Math.random() *  (-600 - 400) - 400;
+        scene.add( cylinder );
+    }
+
+    //top of sweden
+    for(var i=1000; i < 1449; i++){
+        var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
+        var cylinder = new THREE.Mesh( geometry, material );
+        cylinder.position.x = Math.random() *  -1700 + 2000;
+        cylinder.position.z = Math.random() *  1000 - 2600;
+        scene.add( cylinder );
+    }
+
 }
