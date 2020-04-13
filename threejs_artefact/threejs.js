@@ -51,8 +51,8 @@ function threejs_init(){
     mesh.rotation.x = - Math.PI / 2;
     scene.add( mesh );
 
-    camera.position.y = 300;
-    camera.position.z = 100;
+    camera.position.y = 2000;
+    camera.position.z = 4000;
 
     //adding light source to scene
     const light = new THREE.PointLight(0xffffff, 1.2);
@@ -84,7 +84,7 @@ function addCylinders(data){
         var cylinder = new THREE.Mesh( geometry, material );
         cylinder.position.x = Math.random() * 800 - 400;
         cylinder.position.y = Math.random() * 800 - 400;
-        cylinder.position.z = Math.random() * 800 - 400;
+        cylinder.position.z = Math.random() * 800 - 400;        
         scene.add( cylinder );
     }
 }
