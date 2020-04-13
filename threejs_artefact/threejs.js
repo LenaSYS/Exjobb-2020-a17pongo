@@ -61,6 +61,9 @@ function threejs_init(){
 
 	// controls
     var controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls.maxPolarAngle = Math.PI * 0.5;
+	controls.minDistance = 1000;
+	controls.maxDistance = 5000;
     controls.update();
 
     //Animate funktion to draw 3D object to scene
