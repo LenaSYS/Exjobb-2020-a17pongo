@@ -77,7 +77,7 @@ function threejs_init(){
 
 //funktion for adding multiple Cylinder 3D objects to scene
 function addCylinders(data){
-    var material = new THREE.MeshBasicMaterial( {color:"rgb(255, 0, 0)",wireframe:true} );
+    var material = new THREE.MeshBasicMaterial( {color:"rgb(81, 63, 196)",wireframe:true} );
 
     for(var i=0; i < data.length; i++){
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
