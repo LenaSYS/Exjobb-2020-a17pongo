@@ -82,9 +82,8 @@ function addCylinders(data){
     for(var i=0; i < data.length; i++){
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
-        cylinder.position.x = Math.random() * 800 - 400;
-        cylinder.position.y = Math.random() * 800 - 400;
-        cylinder.position.z = Math.random() * 800 - 400;        
+        cylinder.position.x = Math.random() *  -900 + -700;
+        cylinder.position.z = Math.random() *  3000 + 400;
         scene.add( cylinder );
     }
 }
