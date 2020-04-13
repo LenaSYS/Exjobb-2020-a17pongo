@@ -13,6 +13,7 @@ function fetchData(){
   })
   .then((data) => {
     console.log(data);
+    addCylinders(data)
   });
 }
 
@@ -50,8 +51,6 @@ function threejs_init(){
     mesh.rotation.x = - Math.PI / 2;
     scene.add( mesh );
 
-    addCylinders(1000);
-
     camera.position.y = 300;
     camera.position.z = 100;
 
@@ -74,12 +73,11 @@ function threejs_init(){
 }
 
 //funktion for adding multiple Cylinder 3D objects to scene
-function addCylinders(amount){
-
-    var geometry = new THREE.CylinderBufferGeometry( 5, 5, 20, 32 );
+function addCylinders(data){
     var material = new THREE.MeshBasicMaterial( {color:"rgb(255, 0, 0)",wireframe:true} );
 
-    for(var i=0; i < amount; i++){
+    for(var i=0; i < data.length; i++){
+        var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
         cylinder.position.x = Math.random() * 800 - 400;
         cylinder.position.y = Math.random() * 800 - 400;
