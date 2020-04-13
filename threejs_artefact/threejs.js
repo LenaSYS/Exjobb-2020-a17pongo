@@ -5,6 +5,16 @@
 */
 console.log("Threejs artefact - Initiating application");
 
+// constant RGB color values for coloring cylinders depending on data value
+//RED: alot of data
+//yellow: medium amount of data
+//green: not alot of data
+
+const red = "rgb(255, 0, 0)";
+const yellow = "rgb(255, 184, 0)";
+const green = "rgb(134, 234, 52)";
+
+
 //function for retrieving data from json file with fetch API
 function fetchData(){
     fetch('../data/SMHI_merged_simplified_data.json')
@@ -76,10 +86,18 @@ function threejs_init(){
 
 //funktion for adding multiple Cylinder 3D objects to scene
 function addCylinders(data){
-    var material = new THREE.MeshBasicMaterial( {color:"rgb(81, 63, 196)",wireframe:true} );
-
+    var material;
     //bottom of sweden
     for(var i=0; i < 500; i++){
+        if(data[i].year > 700){
+            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+        }
+        else if(data[i].year > 500){
+            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+        }
+        else{
+            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+        }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
         cylinder.position.x = Math.random() *  (-600 -700) - 700;
@@ -89,6 +107,15 @@ function addCylinders(data){
 
     //Middle of sweden 1
     for(var i=500; i < 750; i++){
+        if(data[i].year > 700){
+            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+        }
+        else if(data[i].year < 699){
+            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+        }
+        else{
+            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+        }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
         cylinder.position.x = Math.random() *  (-300 - 200) - 200;
@@ -98,6 +125,15 @@ function addCylinders(data){
 
     //Middle of sweden 2
     for(var i=750; i < 1000; i++){
+        if(data[i].year > 700){
+            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+        }
+        else if(data[i].year < 699){
+            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+        }
+        else{
+            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+        }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
         cylinder.position.x = Math.random() *  (300 + 200) - 200;
@@ -107,6 +143,15 @@ function addCylinders(data){
 
     //top of sweden
     for(var i=1000; i < 1449; i++){
+        if(data[i].year > 700){
+            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+        }
+        else if(data[i].year < 699){
+            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+        }
+        else{
+            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+        }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
         cylinder.position.x = Math.random() *  -1700 + 2000;
