@@ -63,11 +63,6 @@ function threejs_init(){
     camera.position.y = 2000;
     camera.position.z = 4000;
 
-    //adding light source to scene
-    const light = new THREE.PointLight(0xffffff, 1.2);
-    light.position.set(0, 0, 6);
-    scene.add(light);
-
 	// controls
     var controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.maxPolarAngle = Math.PI * 0.5;
