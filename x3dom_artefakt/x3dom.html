@@ -12,7 +12,8 @@
     <x3d> 
         <scene>
             <Viewpoint position="0.09919 -0.32861 9.99410" orientation="0.95171 0.28530 0.11335 0.03455" 
-	zNear="3.34706" zFar="32.17348" centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="0.78540" description="defaultX3DViewpointNode"></Viewpoint>
+                    zNear="3.34706" zFar="32.17348" centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="0.78540" description="defaultX3DViewpointNode">
+            </Viewpoint>
                 <shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
                     <appearance sorttype="auto" alphaclipthreshold="0.1">
                         <ImageTexture  url="../img/3_no_ice_clouds_16k_modified.jpg"><ImageTexture/>
@@ -20,14 +21,17 @@
                     <plane solid="true" size="16 16" ccw="true" usegeocache="true" lit="true" subdivision="1,1" center="0,0,0" primtype="TRIANGLES "></plane>
                 </shape>
 
-                <Shape DEF="cylinderShape">
-                    <Appearance DEF="cylinderApp">
-                        <Material diffuseColor="#33FF66"></Material>
-                    </Appearance>
-                    <Cylinder DEF="cylinder" radius="1.0" height="2.0"></Cylinder>
-                </Shape>
+                <transform rotation="1 0 0 -1.57">
+                <Transform DEF="cylinderTrafo" translation="1 -0.5 1">
+                    <Shape DEF="cylinderShape">
+                        <Appearance DEF="cylinderApp">
+                            <Material diffuseColor="#33FF66"></Material>
+                        </Appearance>
+                        <Cylinder DEF="cylinder" radius="0.1" height="1"></Cylinder>
+                    </Shape>
+                </Transform>
+                </transform>
         </scene> 
-    </x3d> 
-    
+    </x3d>
 </body>
 </html>
