@@ -9,30 +9,17 @@
     <title>X3DOM ARTEFAKT</title>
 </head>
 <body>
-    <x3d width='600px' height='400px'> 
-        <scene> 
-            <shape> 
-                <appearance> 
-                <material diffuseColor='1 0 0'></material> 
-                </appearance> 
-                <box></box> 
-            </shape> 
-            <transform translation='-3 0 0'> 
-            <shape> 
-                <appearance> 
-                <material diffuseColor='0 1 0'></material> 
-                </appearance> 
-                <cone></cone> 
-            </shape> 
-            </transform> 
-            <transform translation='3 0 0'> 
-            <shape> 
-                <appearance> 
-                <material diffuseColor='0 0 1'></material> 
-                </appearance> 
-                <sphere></sphere> 
-            </shape> 
-            </transform> 
+    <x3d> 
+        <scene>
+            <transform translation="0 -5.5 0" rotation="1 0 0 -1.57" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" scale="1,1,1" scaleorientation="0,0,0,0">
+                <shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+                    <appearance sorttype="auto" alphaclipthreshold="0.1">
+                        <material diffusecolor="0.7 0.7 0.7">
+                        </material>
+                    </appearance>                    
+                    <plane solid="true" size="16 16" ccw="true" usegeocache="true" lit="true" subdivision="1,1" center="0,0,0" primtype="TRIANGLES "></plane>
+                </shape>
+            </transform>
         </scene> 
     </x3d> 
     
