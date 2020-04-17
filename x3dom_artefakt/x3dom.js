@@ -1,5 +1,19 @@
 console.log("Running x3dom artefakt");
 
+//function for retrieving data from json file with fetch API
+function fetchData(){
+    fetch('../data/SMHI_merged_simplified_data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data)
+  });
+}
+
+fetchData();
+
+
 var t = document.createElement('Transform');
 t.setAttribute("translation","2 -0.5 1" );
 var s = document.createElement('Shape');
