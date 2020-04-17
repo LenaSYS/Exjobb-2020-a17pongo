@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../lib/x3dom-1.8.1/x3dom-full.js"></script>
-    <script src="x3dom.js"></script>
     <link rel="stylesheet" href="../lib/x3dom-1.8.1/x3dom.css">
     <title>X3DOM ARTEFAKT</title>
 </head>
@@ -21,17 +20,18 @@
                     <plane solid="true" size="16 16" ccw="true" usegeocache="true" lit="true" subdivision="1,1" center="0,0,0" primtype="TRIANGLES "></plane>
                 </shape>
 
-                <transform rotation="1 0 0 -1.57">
-                <Transform translation="1 -0.5 1">
+                <transform  id="root" rotation="1 0 0 -1.57">
+                <transform translation="1 -0.5 1">
                     <Shape>
                         <Appearance>
                             <Material diffuseColor="#33FF66"></Material>
                         </Appearance>
                         <Cylinder radius="0.1" height="1"></Cylinder>
                     </Shape>
-                </Transform>
+                </transform>
                 </transform>
         </scene> 
     </x3d>
+    <script src="x3dom.js"></script>
 </body>
 </html>
