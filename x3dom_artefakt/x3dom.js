@@ -13,6 +13,10 @@ function fetchData(){
 
 fetchData();
 
+//function for dynamicly add cylinders to scene
+function addCylinders(){
+
+}
 
 var t = document.createElement('Transform');
 t.setAttribute("translation","2 -0.5 1" );
