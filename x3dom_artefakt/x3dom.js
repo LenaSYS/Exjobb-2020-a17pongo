@@ -1,5 +1,14 @@
 console.log("Running x3dom artefakt");
 
+//Constant RGB color values for coloring cylinders depending on data value
+//RED: alot of data
+//yellow: medium amount of data
+//green: not alot of data
+
+const red = "#ff0000";
+const yellow = "#00ff00)";
+const green = "#0000ff";
+
 //function for retrieving data from json file with fetch API
 function fetchData(){
     fetch('../data/SMHI_merged_simplified_data.json')
@@ -25,7 +34,7 @@ function addCylinders(data){
 
         // Material Node
         var mat = document.createElement('Material');
-
+        mat.setAttribute("diffuseColor",yellow);
         app.appendChild(mat);
 
         s.appendChild(app);
@@ -33,7 +42,7 @@ function addCylinders(data){
         t.appendChild(s);
         var b = document.createElement('Cylinder');
         b.setAttribute("radius",0.1)
-        b.setAttribute("height",1)
+        b.setAttribute("height",0.55)
         s.appendChild(b);
 
         var ot = document.getElementById('root');
