@@ -8,35 +8,38 @@ function fetchData(){
   })
   .then((data) => {
     console.log(data)
+    addCylinders(data)
   });
 }
 
 //function for dynamicly add cylinders to scene
-function addCylinders(){
-    var t = document.createElement('Transform');
-    t.setAttribute("translation","2 -0.5 1" );
-    var s = document.createElement('Shape');
+function addCylinders(data){
+    
+    for(var i = 0; i<data.length; i++){
+        var t = document.createElement('Transform');
+        t.setAttribute("translation", i + " -0.5 1" );
+        var s = document.createElement('Shape');
 
-    // Appearance Node
-    var app = document.createElement('Appearance');
+        // Appearance Node
+        var app = document.createElement('Appearance');
 
-    // Material Node
-    var mat = document.createElement('Material');
+        // Material Node
+        var mat = document.createElement('Material');
 
-    app.appendChild(mat);
+        app.appendChild(mat);
 
-    s.appendChild(app);
+        s.appendChild(app);
 
-    t.appendChild(s);
-    var b = document.createElement('Cylinder');
-    b.setAttribute("radius",0.1)
-    b.setAttribute("height",1)
-    s.appendChild(b);
+        t.appendChild(s);
+        var b = document.createElement('Cylinder');
+        b.setAttribute("radius",0.1)
+        b.setAttribute("height",1)
+        s.appendChild(b);
 
-    var ot = document.getElementById('root');
-    ot.appendChild(t);
+        var ot = document.getElementById('root');
+        ot.appendChild(t);
+    }
 }
 
 
 fetchData();
-addCylinders();
