@@ -25,8 +25,12 @@ function fetchData(){
 function addCylinders(data){
     
     for(var i = 0; i<data.length; i++){
+
+      var xCord = Math.floor(Math.random() * 6 - 3);
+      var zcord = Math.floor(Math.random() * 6 - 3);
+
         var t = document.createElement('Transform');
-        t.setAttribute("translation", i + " -0.5 1" );
+        t.setAttribute("translation", xCord + " -0.5 " + zcord );
         var s = document.createElement('Shape');
 
         // Appearance Node
