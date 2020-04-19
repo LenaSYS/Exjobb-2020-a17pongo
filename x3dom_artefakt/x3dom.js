@@ -23,6 +23,8 @@ function fetchData(){
 
 //function for dynamicly add cylinders to scene
 function addCylinders(data){
+  var my_chance = new Chance();
+    console.log(my_chance.bool());
     
     //bottom of sweden
     for(var i = 0; i< 10; i++){
