@@ -6,8 +6,8 @@ console.log("Running x3dom artefakt");
 //green: not alot of data
 
 const red = "#ff0000";
-const yellow = "#00ff00)";
-const green = "#0000ff";
+const yellow = "#f9b700";
+const green = "#86ea34";
 
 //function for retrieving data from json file with fetch API
 function fetchData(){
@@ -24,22 +24,32 @@ function fetchData(){
 //function for dynamicly add cylinders to scene
 function addCylinders(data){
     
+    //top of sweden
     for(var i = 0; i<data.length; i++){
+      // Material Node
+      var mat = document.createElement('Material');
+      // Appearance Node
+      var app = document.createElement('Appearance');
+
+    if(data[i].year > 700){
+        mat.setAttribute("diffuseColor",red);
+        app.appendChild(mat);
+    }
+    else if(data[i].year > 500){
+      mat.setAttribute("diffuseColor",yellow);
+      app.appendChild(mat);
+    }
+    else{
+      mat.setAttribute("diffuseColor",green);
+      app.appendChild(mat);
+    }
 
       var xCord = Math.floor(Math.random() * 6 - 3);
-      var zcord = Math.floor(Math.random() * 6 - 3);
+      var zcord = Math.floor(Math.random() * 3);
 
         var t = document.createElement('Transform');
         t.setAttribute("translation", xCord + " -0.5 " + zcord );
         var s = document.createElement('Shape');
-
-        // Appearance Node
-        var app = document.createElement('Appearance');
-
-        // Material Node
-        var mat = document.createElement('Material');
-        mat.setAttribute("diffuseColor",yellow);
-        app.appendChild(mat);
 
         s.appendChild(app);
 
