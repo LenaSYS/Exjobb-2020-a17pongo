@@ -27,7 +27,7 @@ function addCylinders(data){
   var yCord = new Chance();
     
     //bottom of sweden
-    for(var i = 0; i< 10; i++){
+    for(var i = 0; i< 500; i++){
       // Material Node
       var mat = document.createElement('Material');
       // Appearance Node
@@ -47,7 +47,7 @@ function addCylinders(data){
     }
 
         var t = document.createElement('Transform');
-        t.setAttribute("translation", xCord.integer({min: -3, max: 1}) + " -0.5 " + yCord.integer({min: -4, max: 5}) );
+        t.setAttribute("translation", xCord.integer({min: -2.5, max: 10}) + " -0.5 " + yCord.integer({min: -5, max: 10}) );
         var s = document.createElement('Shape');
 
         s.appendChild(app);
@@ -63,7 +63,7 @@ function addCylinders(data){
     }
 
         //top of sweden
-       /* for(var i = 0; i< 50; i++){
+       for(var i = 0; i< 50; i++){
           // Material Node
           var mat = document.createElement('Material');
           // Appearance Node
@@ -82,12 +82,8 @@ function addCylinders(data){
           app.appendChild(mat);
         }
     
-
-    var xCord = Math.floor(Math.random() * 6 - 3);
-    var zcord = Math.floor(Math.random() * 3 - 5);
-    
             var t = document.createElement('Transform');
-            t.setAttribute("translation", xCord + " -0.5 " + zcord );
+            t.setAttribute("translation", xCord.integer({min:-3, max:6}) + " -0.5 " + yCord.integer({min: -5, max: 3}) );
             var s = document.createElement('Shape');
     
             s.appendChild(app);
@@ -100,7 +96,7 @@ function addCylinders(data){
     
             var ot = document.getElementById('root');
             ot.appendChild(t);
-        }*/
+        }
 
 }
 
