@@ -23,8 +23,8 @@ function fetchData(){
 
 //function for dynamicly add cylinders to scene
 function addCylinders(data){
-  var my_chance = new Chance();
-    console.log(my_chance.bool());
+  var xCord = new Chance();
+  var yCord = new Chance();
     
     //bottom of sweden
     for(var i = 0; i< 10; i++){
@@ -46,13 +46,8 @@ function addCylinders(data){
       app.appendChild(mat);
     }
 
-    var xCord = Math.floor(Math.random() * 6 - 3);
-    var zcord = Math.floor(Math.random() * 3 - 5);
-
-    console.log(zcord)
-
         var t = document.createElement('Transform');
-        t.setAttribute("translation", xCord + " -0.5 " + zcord );
+        t.setAttribute("translation", xCord.integer({min: -3, max: 1}) + " -0.5 " + yCord.integer({min: -4, max: 5}) );
         var s = document.createElement('Shape');
 
         s.appendChild(app);
@@ -87,8 +82,9 @@ function addCylinders(data){
           app.appendChild(mat);
         }
     
-        var xCord = Math.floor(Math.random() * 6 - 3);
-        var zcord = Math.floor(Math.random() * 3);
+
+    var xCord = Math.floor(Math.random() * 6 - 3);
+    var zcord = Math.floor(Math.random() * 3 - 5);
     
             var t = document.createElement('Transform');
             t.setAttribute("translation", xCord + " -0.5 " + zcord );
