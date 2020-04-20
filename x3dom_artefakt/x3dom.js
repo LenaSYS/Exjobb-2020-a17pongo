@@ -54,7 +54,7 @@ function addCylinders(data){
 
         t.appendChild(s);
         var b = document.createElement('Cylinder');
-        b.setAttribute("radius",0.1)
+        b.setAttribute("radius",0.01)
         b.setAttribute("height",0.55)
         s.appendChild(b);
 
@@ -90,7 +90,7 @@ function addCylinders(data){
     
             t.appendChild(s);
             var b = document.createElement('Cylinder');
-            b.setAttribute("radius",0.1)
+            b.setAttribute("radius",0.01)
             b.setAttribute("height",0.55)
             s.appendChild(b);
     
