@@ -56,7 +56,7 @@ function addCylinders(data) {
 		t.appendChild(s);
 		var b = document.createElement('Cylinder');
 		b.setAttribute('radius', 0.01);
-		b.setAttribute('height', 0.55);
+		b.setAttribute('height', "0."+Math.round(data[i].year));
 		s.appendChild(b);
 
 		var ot = document.getElementById('root');
@@ -93,7 +93,7 @@ function addCylinders(data) {
 		t.appendChild(s);
 		var b = document.createElement('Cylinder');
 		b.setAttribute('radius', 0.01);
-		b.setAttribute('height', 0.55);
+		b.setAttribute('height', "0."+Math.round(data[i].year));
 		s.appendChild(b);
 
 		var ot = document.getElementById('root');
@@ -129,7 +129,7 @@ function addCylinders(data) {
 		t.appendChild(s);
 		var b = document.createElement('Cylinder');
 		b.setAttribute('radius', 0.01);
-		b.setAttribute('height', 0.55);
+		b.setAttribute('height', "0."+Math.round(data[i].year));
 		s.appendChild(b);
 
 		var ot = document.getElementById('root');
@@ -166,7 +166,7 @@ function addCylinders(data) {
 		t.appendChild(s);
 		var b = document.createElement('Cylinder');
 		b.setAttribute('radius', 0.01);
-		b.setAttribute('height', 0.55);
+		b.setAttribute('height', "0."+Math.round(data[i].year));
 		s.appendChild(b);
 
 		var ot = document.getElementById('root');
