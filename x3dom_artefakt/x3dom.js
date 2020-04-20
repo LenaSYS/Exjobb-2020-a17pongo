@@ -47,7 +47,7 @@ function addCylinders(data) {
 		var t = document.createElement('Transform');
 		t.setAttribute(
 			'translation',
-			xCord.floating({ min: -5.8, max: -1.8 }) + ' -0.5 ' + yCord.floating({ min: -10.5, max: -3 })
+			xCord.floating({ min: -5.8, max: -1.8 }) + ' -0.5 ' + yCord.floating({ min: -10.5, max: -3.5 })
 		);
 		var s = document.createElement('Shape');
 
@@ -63,9 +63,8 @@ function addCylinders(data) {
 		ot.appendChild(t);
 	}
 
-  //top of sweden
-  /*
-	for (var i = 0; i < 50; i++) {
+  //middle of sweden 1
+	for (var i = 500; i < 750; i++) {
 		// Material Node
 		var mat = document.createElement('Material');
 		// Appearance Node
@@ -85,7 +84,7 @@ function addCylinders(data) {
 		var t = document.createElement('Transform');
 		t.setAttribute(
 			'translation',
-			xCord.integer({ min: -3, max: 6 }) + ' -0.5 ' + yCord.integer({ min: -5, max: 3 })
+			xCord.floating({ min: -4.8, max: -2.8 }) + ' -0.5 ' + yCord.floating({ min: -2.5, max: 2.5 })
 		);
 		var s = document.createElement('Shape');
 
@@ -100,7 +99,79 @@ function addCylinders(data) {
 		var ot = document.getElementById('root');
 		ot.appendChild(t);
   }
-  */
+    //middle of sweden 2
+	for (var i = 750; i < 1000; i++) {
+		// Material Node
+		var mat = document.createElement('Material');
+		// Appearance Node
+		var app = document.createElement('Appearance');
+
+		if (data[i].year > 700) {
+			mat.setAttribute('diffuseColor', red);
+			app.appendChild(mat);
+		} else if (data[i].year > 500) {
+			mat.setAttribute('diffuseColor', yellow);
+			app.appendChild(mat);
+		} else {
+			mat.setAttribute('diffuseColor', green);
+			app.appendChild(mat);
+		}
+
+		var t = document.createElement('Transform');
+		t.setAttribute(
+			'translation',
+			xCord.floating({ min: -2.8, max: 1.8 }) + ' -0.5 ' + yCord.floating({ min: 0.5, max: 3.5 })
+		);
+		var s = document.createElement('Shape');
+
+		s.appendChild(app);
+
+		t.appendChild(s);
+		var b = document.createElement('Cylinder');
+		b.setAttribute('radius', 0.01);
+		b.setAttribute('height', 0.55);
+		s.appendChild(b);
+
+		var ot = document.getElementById('root');
+		ot.appendChild(t);
+  }
+
+  //top of sweden 2
+	for (var i = 1000; i < 1449; i++) {
+		// Material Node
+		var mat = document.createElement('Material');
+		// Appearance Node
+		var app = document.createElement('Appearance');
+
+		if (data[i].year > 700) {
+			mat.setAttribute('diffuseColor', red);
+			app.appendChild(mat);
+		} else if (data[i].year > 500) {
+			mat.setAttribute('diffuseColor', yellow);
+			app.appendChild(mat);
+		} else {
+			mat.setAttribute('diffuseColor', green);
+			app.appendChild(mat);
+		}
+
+		var t = document.createElement('Transform');
+		t.setAttribute(
+			'translation',
+			xCord.floating({ min: 1.8, max: 4.8 }) + ' -0.5 ' + yCord.floating({ min: 5.5, max: 7.5 })
+		);
+		var s = document.createElement('Shape');
+
+		s.appendChild(app);
+
+		t.appendChild(s);
+		var b = document.createElement('Cylinder');
+		b.setAttribute('radius', 0.01);
+		b.setAttribute('height', 0.55);
+		s.appendChild(b);
+
+		var ot = document.getElementById('root');
+		ot.appendChild(t);
+  }
 }
 
 fetchData();
