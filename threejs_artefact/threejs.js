@@ -1,11 +1,7 @@
-/*
-    Purpose of this JS file is to load all dependencies
-    create initial setup needed for both artefacts
-    This will minimize the potential effect these initial steps can have on the experiments
-*/
-console.log('Threejs artefact - Initiating application');
+console.log('Threejs artefact - running');
 
 // constant RGB color values for coloring cylinders depending on data value
+//Although should not, as of today, be seen as 100% accurate representing the data
 //RED: alot of data
 //yellow: medium amount of data
 //green: not alot of data
@@ -25,15 +21,8 @@ function fetchData() {
 		});
 }
 
-/*THREEJS RELATED CODE*/
-
 //Creating a global scene needed for showing anything graphics related
 var scene = new THREE.Scene();
-
-//fetching data before initiating threeJS scene
-fetchData();
-//Function for initiating scene configuration and starting to draw objects to scene
-threejs_init();
 
 function threejs_init() {
 	//Setting up threejs
@@ -145,3 +134,8 @@ function addCylinders(data) {
 		scene.add(cylinder);
 	}
 }
+
+//fetching data before initiating threeJS scene
+fetchData();
+//Function for initiating scene configuration and starting to draw objects to scene
+threejs_init();
