@@ -47,7 +47,7 @@ function addCylinders(data) {
 		var t = document.createElement('Transform');
 		t.setAttribute(
 			'translation',
-			xCord.integer({ min: -2.5, max: 10 }) + ' -0.5 ' + yCord.integer({ min: -5, max: 10 })
+			xCord.floating({ min: -6.7, max: 8.7 }) + ' -0.5 ' + yCord.floating({ min: -9, max: 4 })
 		);
 		var s = document.createElement('Shape');
 
@@ -63,7 +63,8 @@ function addCylinders(data) {
 		ot.appendChild(t);
 	}
 
-	//top of sweden
+  //top of sweden
+  /*
 	for (var i = 0; i < 50; i++) {
 		// Material Node
 		var mat = document.createElement('Material');
@@ -98,7 +99,8 @@ function addCylinders(data) {
 
 		var ot = document.getElementById('root');
 		ot.appendChild(t);
-	}
+  }
+  */
 }
 
 fetchData();
