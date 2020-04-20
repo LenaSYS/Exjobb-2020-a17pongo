@@ -47,7 +47,7 @@ function addCylinders(data) {
 		var t = document.createElement('Transform');
 		t.setAttribute(
 			'translation',
-			xCord.floating({ min: -6.7, max: 8.7 }) + ' -0.5 ' + yCord.floating({ min: -9, max: 4 })
+			xCord.floating({ min: -5.8, max: -1.8 }) + ' -0.5 ' + yCord.floating({ min: -10.5, max: -3 })
 		);
 		var s = document.createElement('Shape');
 
