@@ -85,13 +85,13 @@ function addCylinders(data){
     //bottom of sweden
     for(var i=0; i < 500; i++){
         if(data[i].year > 700){
-            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:red} );
         }
         else if(data[i].year > 500){
-            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:yellow} );
         }
         else{
-            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:green} );
         }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
@@ -103,13 +103,13 @@ function addCylinders(data){
     //Middle of sweden 1
     for(var i=500; i < 750; i++){
         if(data[i].year > 700){
-            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:red} );
         }
         else if(data[i].year < 699){
-            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:yellow} );
         }
         else{
-            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:green} );
         }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
@@ -121,13 +121,13 @@ function addCylinders(data){
     //Middle of sweden 2
     for(var i=750; i < 1000; i++){
         if(data[i].year > 700){
-            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:red} );
         }
         else if(data[i].year < 699){
-            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:yellow} );
         }
         else{
-            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:green} );
         }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
@@ -139,13 +139,13 @@ function addCylinders(data){
     //top of sweden
     for(var i=1000; i < 1449; i++){
         if(data[i].year > 700){
-            material = new THREE.MeshBasicMaterial( {color:red,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:red} );
         }
         else if(data[i].year < 699){
-            material = new THREE.MeshBasicMaterial( {color:yellow,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:yellow} );
         }
         else{
-            material = new THREE.MeshBasicMaterial( {color:green,wireframe:true} );
+            material = new THREE.MeshBasicMaterial( {color:green} );
         }
         var geometry = new THREE.CylinderBufferGeometry( 5, 5, data[i].year, 32 );
         var cylinder = new THREE.Mesh( geometry, material );
