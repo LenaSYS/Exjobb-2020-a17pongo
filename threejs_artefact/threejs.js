@@ -65,10 +65,15 @@ function threejs_init() {
 		renderer.render(scene, camera);
 	}
 	animate();
+
+	//fetching data before initiating threeJS scene
+	fetchData();
 }
 
 //funktion for adding multiple Cylinder 3D objects to scene
 function addCylinders(data) {
+	console.log("start: " + Math.round(performance.now()))
+
 	var material;
 	//bottom of sweden
 	for (var i = 0; i < 500; i++) {
@@ -133,9 +138,10 @@ function addCylinders(data) {
 		cylinder.position.z = Math.random() * 1000 - 2600;
 		scene.add(cylinder);
 	}
+
+	console.log("end: " + Math.round(performance.now()))
 }
 
-//fetching data before initiating threeJS scene
-fetchData();
+
 //Function for initiating scene configuration and starting to draw objects to scene
 threejs_init();
