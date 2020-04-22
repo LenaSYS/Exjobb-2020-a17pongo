@@ -49,20 +49,25 @@ window.addEventListener(
 	'load',
 	function() {
 		(async () => {
-      console.log("testing")
-      
-			var count = await GM.getValue('count', 0); //hur många gånger vi laddat om sidan
-			var runs = 10; //antal gånger skriptet ska genomföra sökningar
+			console.log('startTimeGM ' + localStorage.getItem('startTime'));
+			console.log('endTime ' + localStorage.getItem('endTime'));
+			var count = await GM.getValue('count', 0);
+			var runs = 1;
 
 			if (count != runs) {
-        await GM.setValue('count', count + 1);
+				console.log(count);
+				await GM.setValue('count', count + 1);
 				console.log('count:' + count);
-        location.reload(true);
-
+				location.reload(true);
 			} else {
-				console.log('finished');
-        await GM.setValue('count', 0);
-        console.log('count:' + count);
+				//saveDatatoFile();
+				console.log('finished measuring, cleaning up');
+				count = 0;
+				await GM.setValue('count', 0);
+				console.log('count:' + count);
+				localStorage.setItem('startTime', '');
+				localStorage.setItem('endTime', '');
+				localStorage.clear();
 			}
 		})();
 	},
