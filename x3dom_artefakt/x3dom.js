@@ -22,6 +22,10 @@ function fetchData() {
 
 //function for dynamicly add cylinders to scene
 function addCylinders(data) {
+	startTime = performance.now();
+	localStorage.setItem('startTime', JSON.stringify(startTime));
+	console.log("threejs-startTime: " + startTime)
+
 	var xCord = new Chance();
 	var yCord = new Chance();
 
@@ -171,6 +175,10 @@ function addCylinders(data) {
 		var ot = document.getElementById('root');
 		ot.appendChild(t);
   }
+
+  endTime = performance.now();
+  localStorage.setItem('endTime', JSON.stringify(endTime));
+  console.log("threejs-endTime: " + endTime)
 }
 
 fetchData();
