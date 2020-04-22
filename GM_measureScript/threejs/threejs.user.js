@@ -7,6 +7,17 @@
 // @grant       GM.getValue
 // ==/UserScript==
 
+console.log('GM RUNNING');
+
+var artefact = '';
+
+if (window.location.href.endsWith('threejs.html')) {
+	artefact = 'Threejs';
+	console.log(artefact);
+} else if (window.location.href.endsWith('x3dom.html')) {
+	artefact = 'X3DOM';
+	console.log(artefact);
+}
 
 //Function for saving measured data and downloading it as a plain .txt file
 function saveDatatoFile(artefact,data){
