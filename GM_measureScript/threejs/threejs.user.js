@@ -1,8 +1,11 @@
 // ==UserScript==
-// @name     threejs
+// @name     measureScript
 // @version  1
 // @description performance test
 // @include     http://localhost:5500/threejs_artefact/threejs.html
+// @include     http://127.0.0.1:5500/threejs_artefact/threejs.html
+// @include     http://localhost:5500/threejs_artefact/x3dom.html
+// @include     http://127.0.0.1:5500/threejs_artefact/x3dom.html
 // @grant       GM.setValue
 // @grant       GM.getValue
 // ==/UserScript==
