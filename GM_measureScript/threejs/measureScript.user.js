@@ -27,9 +27,9 @@ if (window.location.href.endsWith('threejs.html')) {
 function saveDatatoFile() {
 	console.log('Creating file to save measuredata to');
 	var data = localStorage.getItem('measure');
-	const blob = new Blob([ data ], { type: 'text/plain' });
-	const url = window.URL.createObjectURL(blob);
-	const a = document.createElement('a');
+	var blob = new Blob([ data ], { type: 'text/plain' });
+	var url = window.URL.createObjectURL(blob);
+	var a = document.createElement('a');
 	a.href = url;
 	a.download = artefact + '.txt';
 	a.click();
@@ -55,7 +55,7 @@ window.addEventListener(
 			console.log('startTimeGM ' + localStorage.getItem('startTime'));
 			console.log('endTime ' + localStorage.getItem('endTime'));
 			var count = await GM.getValue('count', 0);
-			var runs = 1;
+			var runs = 10;
 
 			if (count != runs) {
 				saveMeasure();
@@ -63,7 +63,7 @@ window.addEventListener(
 				console.log('count:' + count);
 				location.reload(true);
 			} else {
-				//saveDatatoFile();
+				saveDatatoFile();
 				console.log('finished measuring, cleaning up');
 				count = 0;
 				await GM.setValue('count', 0);
