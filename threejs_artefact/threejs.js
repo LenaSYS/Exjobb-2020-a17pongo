@@ -73,7 +73,7 @@ function threejs_init() {
 function addCylinders(data) {
 	startTime = performance.now();
 	localStorage.setItem('startTime', JSON.stringify(startTime));
-	console.log("startTime: " + startTime)
+	console.log("threejs-startTime: " + startTime)
 
 	var material;
 	//bottom of sweden
@@ -142,7 +142,7 @@ function addCylinders(data) {
 
 	endTime = performance.now();
 	localStorage.setItem('endTime', JSON.stringify(endTime));
-	console.log("endtime: " + endTime)
+	console.log("threejs-endtime: " + endTime)
 }
 
 

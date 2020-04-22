@@ -58,7 +58,7 @@ window.addEventListener(
 			var runs = 1;
 
 			if (count != runs) {
-				console.log(count);
+				saveMeasure();
 				await GM.setValue('count', count + 1);
 				console.log('count:' + count);
 				location.reload(true);
