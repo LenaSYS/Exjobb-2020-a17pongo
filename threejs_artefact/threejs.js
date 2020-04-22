@@ -58,6 +58,8 @@ function threejs_init() {
 	controls.maxDistance = 5000;
 	controls.update();
 
+
+
 	//Animate funktion to draw 3D object to scene
 	function animate() {
 		requestAnimationFrame(animate);
@@ -65,14 +67,13 @@ function threejs_init() {
 		renderer.render(scene, camera);
 	}
 	animate();
-
-	//fetching data before initiating threeJS scene
-	fetchData();
 }
 
 //funktion for adding multiple Cylinder 3D objects to scene
 function addCylinders(data) {
-	console.log("start: " + Math.round(performance.now()))
+	startTime = performance.now();
+	localStorage.setItem('startTime', JSON.stringify(startTime));
+	console.log("startTime: " + startTime)
 
 	var material;
 	//bottom of sweden
@@ -139,9 +140,14 @@ function addCylinders(data) {
 		scene.add(cylinder);
 	}
 
-	console.log("end: " + Math.round(performance.now()))
+	endTime = performance.now();
+	localStorage.setItem('endTime', JSON.stringify(endTime));
+	console.log("endtime: " + endTime)
 }
 
 
 //Function for initiating scene configuration and starting to draw objects to scene
 threejs_init();
+
+//fetching data before initiating threeJS scene
+fetchData();
