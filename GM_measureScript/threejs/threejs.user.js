@@ -32,6 +32,19 @@ function saveDatatoFile() {
 	a.click();
 }
 
+//retrieving measured data from localstorage
+//calculating the difference and storing the resault
+function saveMeasure() {
+	var startTime = localStorage.getItem('startTime');
+	var endTime = localStorage.getItem('endTime');
+	var delta = endTime - startTime;
+	console.log('delta: ', delta);
+	var str = localStorage.getItem('measure');
+	str += ',' + Math.round(delta) + '\n';
+	localStorage.setItem('measure', str);
+	console.log(localStorage.getItem('measure'));
+}
+
 window.addEventListener(
 	'load',
 	function() {
