@@ -85,7 +85,7 @@ function addCylinders(data) {
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, data[i].year, 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(data[i].year), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
 		cylinder.position.x = Math.random() * (-600 - 700) - 700;
 		cylinder.position.z = Math.random() * (4500 - 700) - 700;
@@ -101,7 +101,7 @@ function addCylinders(data) {
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, data[i].year, 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(data[i].year), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
 		cylinder.position.x = Math.random() * (-300 - 200) - 200;
 		cylinder.position.z = Math.random() * (-800 - 600) - 600;
@@ -117,7 +117,7 @@ function addCylinders(data) {
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, data[i].year, 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(data[i].year), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
 		cylinder.position.x = Math.random() * (300 + 200) - 200;
 		cylinder.position.z = Math.random() * (-600 - 400) - 400;
