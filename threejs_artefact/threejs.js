@@ -11,7 +11,6 @@ const yellow = 'rgb(255, 184, 0)';
 const green = 'rgb(134, 234, 52)';
 
 var seed = new Chance(12345);
-var coordARR = [];
 var heightARR = [];
 
 //function for retrieving data from json file with fetch API
@@ -67,8 +66,6 @@ function threejs_init() {
 	controls.maxDistance = 5000;
 	controls.update();
 
-
-
 	//Animate funktion to draw 3D object to scene
 	function animate() {
 		requestAnimationFrame(animate);
@@ -101,40 +98,41 @@ function addCylinders() {
 		}
 		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(heightARR[i]), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
-		cylinder.position.x = Math.random() * (-600 - 700) - 700;
-		cylinder.position.z = Math.random() * (4500 - 700) - 700;
+		cylinder.position.x = seed.floating({ min: -1800, max: -800 });
+		cylinder.position.z = seed.floating({ min: -600, max: 2500 });
 		scene.add(cylinder);
 	}
 
 	//Middle of sweden 1
 	for (var i = 500; i < 750; i++) {
-		if (data[i].year > 700) {
+		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
-		} else if (data[i].year < 699) {
+		} else if (heightARR[i] < 699) {
 			material = new THREE.MeshBasicMaterial({ color: yellow });
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(data[i].year), 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(heightARR[i]), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
-		cylinder.position.x = Math.random() * (-300 - 200) - 200;
-		cylinder.position.z = Math.random() * (-800 - 600) - 600;
+		cylinder.position.x = seed.floating({ min: 200, max: 700 });
+		cylinder.position.z = seed.floating({ min: -1900, max: -600 });
 		scene.add(cylinder);
 	}
 
 	//Middle of sweden 2
 	for (var i = 750; i < 1000; i++) {
-		if (data[i].year > 700) {
+		if (heightARR[i]> 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
-		} else if (data[i].year < 699) {
+		} else if (heightARR[i] < 699) {
 			material = new THREE.MeshBasicMaterial({ color: yellow });
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(data[i].year), 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(heightARR[i]), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
 		cylinder.position.x = Math.random() * (300 + 200) - 200;
-		cylinder.position.z = Math.random() * (-600 - 400) - 400;
+		cylinder.position.z = seed.floating({ min: -1300, max: -400 });
+		console.log("x:"+cylinder.position.x)
 		scene.add(cylinder);
 	}
 
