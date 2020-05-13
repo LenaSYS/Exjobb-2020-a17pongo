@@ -48,7 +48,8 @@ function threejs_init() {
 	mesh.rotation.x = -Math.PI / 2;
 	scene.add(mesh);
 
-	camera.position.y = 2000;
+	camera.position.y = 4000;
+	camera.position.x = 4000;
 	camera.position.z = 4000;
 
 	// controls
@@ -67,6 +68,9 @@ function threejs_init() {
 		renderer.render(scene, camera);
 	}
 	animate();
+
+	//fetching data before initiating threeJS scene
+	fetchData();
 }
 
 //funktion for adding multiple Cylinder 3D objects to scene
@@ -148,6 +152,3 @@ function addCylinders(data) {
 
 //Function for initiating scene configuration and starting to draw objects to scene
 threejs_init();
-
-//fetching data before initiating threeJS scene
-fetchData();
