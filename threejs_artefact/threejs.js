@@ -10,6 +10,10 @@ const red = 'rgb(255, 0, 0)';
 const yellow = 'rgb(255, 184, 0)';
 const green = 'rgb(134, 234, 52)';
 
+var seed = new Chance(12345);
+var coordARR = [];
+var heightARR = [];
+
 //function for retrieving data from json file with fetch API
 function fetchData() {
 	fetch('../data/SMHI_merged_simplified_data.json')
@@ -17,7 +21,11 @@ function fetchData() {
 			return response.json();
 		})
 		.then((data) => {
-			addCylinders(data);
+			data.forEach(item => {
+				heightARR.push(item.year)
+			});
+		}).then(function () {
+			addCylinders();
 		});
 }
 
@@ -67,14 +75,15 @@ function threejs_init() {
 		controls.update();
 		renderer.render(scene, camera);
 	}
+
 	animate();
 
-	//fetching data before initiating threeJS scene
+	//fetching data after scene is created and animated
 	fetchData();
 }
 
 //funktion for adding multiple Cylinder 3D objects to scene
-function addCylinders(data) {
+function addCylinders() {
 	startTime = performance.now();
 	localStorage.setItem('startTime', JSON.stringify(startTime));
 	console.log("threejs-startTime: " + startTime)
@@ -82,14 +91,15 @@ function addCylinders(data) {
 	var material;
 	//bottom of sweden
 	for (var i = 0; i < 500; i++) {
-		if (data[i].year > 700) {
+		console.log("heightarr: " + heightARR[0]);
+		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
-		} else if (data[i].year > 500) {
+		} else if (heightARR[i] > 500) {
 			material = new THREE.MeshBasicMaterial({ color: yellow });
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(data[i].year), 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(heightARR[i]), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
 		cylinder.position.x = Math.random() * (-600 - 700) - 700;
 		cylinder.position.z = Math.random() * (4500 - 700) - 700;
