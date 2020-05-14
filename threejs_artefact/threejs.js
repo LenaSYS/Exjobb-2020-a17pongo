@@ -93,7 +93,7 @@ function addCylinders() {
 
 	var material;
 	//bottom of sweden, change the value compared to i depending on the amount of data you want to be writen to scene
-	for (var i = 0; i < 15000; i++) {
+	for (var i = 0; i < 1500; i++) {
 		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
 		} else if (heightARR[i] > 500) {
