@@ -5,7 +5,6 @@ console.log('Threejs artefact - running');
 //RED: alot of data
 //yellow: medium amount of data
 //green: not alot of data
-
 const red = 'rgb(255, 0, 0)';
 const yellow = 'rgb(255, 184, 0)';
 const green = 'rgb(134, 234, 52)';
@@ -27,10 +26,11 @@ function fetchData() {
 				heightARR.push(item.year)
 			});
 		}).then(function () {
+			//adds wanted amount of values to heightArr representing the same data value year in dataset from SMHI
+			//seed is used to get the same random numbers
 			for(var i=0; i<15460; i++){
 				heightARR.push(seed.floating({ min: 1, max: 1500 }))
 			}
-			console.log(heightARR);
 		}).then(function () {
 			addCylinders();
 		});
@@ -81,6 +81,7 @@ function threejs_init() {
 	animate();
 
 	//fetching data after scene is created and animated
+	//function then calls addCylinders function to write out wanted amount of cylinders to scene
 	fetchData();
 }
 
@@ -91,7 +92,7 @@ function addCylinders() {
 	console.log("threejs-startTime: " + startTime)
 
 	var material;
-	//bottom of sweden
+	//bottom of sweden, change the value compared to i depending on the amount of data you want to be writen to scene
 	for (var i = 0; i < 15000; i++) {
 		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
