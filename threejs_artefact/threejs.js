@@ -10,6 +10,9 @@ const red = 'rgb(255, 0, 0)';
 const yellow = 'rgb(255, 184, 0)';
 const green = 'rgb(134, 234, 52)';
 
+//Creating a global scene needed for showing anything graphics related
+var scene = new THREE.Scene();
+
 var seed = new Chance(12345);
 var heightARR = [];
 
@@ -24,12 +27,14 @@ function fetchData() {
 				heightARR.push(item.year)
 			});
 		}).then(function () {
+			for(var i=0; i<15460; i++){
+				heightARR.push(seed.floating({ min: 1, max: 1500 }))
+			}
+			console.log(heightARR);
+		}).then(function () {
 			addCylinders();
 		});
 }
-
-//Creating a global scene needed for showing anything graphics related
-var scene = new THREE.Scene();
 
 function threejs_init() {
 	//Setting up threejs
@@ -87,8 +92,7 @@ function addCylinders() {
 
 	var material;
 	//bottom of sweden
-	for (var i = 0; i < 500; i++) {
-		console.log("heightarr: " + heightARR[0]);
+	for (var i = 0; i < 15000; i++) {
 		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
 		} else if (heightARR[i] > 500) {
@@ -104,7 +108,7 @@ function addCylinders() {
 	}
 
 	//Middle of sweden 1
-	for (var i = 500; i < 750; i++) {
+	/*for (var i = 4000; i < 8000; i++) {
 		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
 		} else if (heightARR[i] < 699) {
@@ -120,7 +124,7 @@ function addCylinders() {
 	}
 
 	//Middle of sweden 2
-	for (var i = 750; i < 1000; i++) {
+	for (var i = 8000; i < 12000; i++) {
 		if (heightARR[i]> 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
 		} else if (heightARR[i] < 699) {
@@ -130,33 +134,31 @@ function addCylinders() {
 		}
 		var geometry = new THREE.CylinderBufferGeometry(5, 5, Math.round(heightARR[i]), 32);
 		var cylinder = new THREE.Mesh(geometry, material);
-		cylinder.position.x = Math.random() * (300 + 200) - 200;
+		cylinder.position.x = seed.floating({ min: -200, max: 300 });
 		cylinder.position.z = seed.floating({ min: -1300, max: -400 });
-		console.log("x:"+cylinder.position.x)
 		scene.add(cylinder);
 	}
 
 	//top of sweden
-	for (var i = 1000; i < 1449; i++) {
-		if (data[i].year > 700) {
+	for (var i = 12000; i < 16000; i++) {
+		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
-		} else if (data[i].year < 699) {
+		} else if (heightARR[i] < 699) {
 			material = new THREE.MeshBasicMaterial({ color: yellow });
 		} else {
 			material = new THREE.MeshBasicMaterial({ color: green });
 		}
-		var geometry = new THREE.CylinderBufferGeometry(5, 5, data[i].year, 32);
+		var geometry = new THREE.CylinderBufferGeometry(5, 5, heightARR[i], 32);
 		var cylinder = new THREE.Mesh(geometry, material);
-		cylinder.position.x = Math.random() * -1700 + 2000;
-		cylinder.position.z = Math.random() * 1000 - 2600;
+		cylinder.position.x = seed.floating({ min: 300, max: 1900 });
+		cylinder.position.z = seed.floating({ min: -2600, max: -1600 });
 		scene.add(cylinder);
-	}
+	}*/
 
 	endTime = performance.now();
 	localStorage.setItem('endTime', JSON.stringify(endTime));
 	console.log("threejs-endtime: " + endTime)
 }
-
 
 //Function for initiating scene configuration and starting to draw objects to scene
 threejs_init();
