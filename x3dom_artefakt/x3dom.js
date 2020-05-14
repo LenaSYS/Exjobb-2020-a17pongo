@@ -9,6 +9,9 @@ const red = '#ff0000';
 const yellow = '#f9b700';
 const green = '#86ea34';
 
+var seed = new Chance(12345);
+var heightARR = [];
+
 //function for retrieving data from json file with fetch API
 function fetchData() {
 	fetch('../data/SMHI_merged_simplified_data.json')
@@ -16,7 +19,17 @@ function fetchData() {
 			return response.json();
 		})
 		.then((data) => {
-			addCylinders(data);
+			data.forEach(item => {
+				heightARR.push(item.year)
+			});
+		}).then(function () {
+			//adds wanted amount of values to heightArr representing the same data value year in dataset from SMHI
+			//seed is used to get the same random numbers
+			for(var i=0; i<15460; i++){
+				heightARR.push(seed.floating({ min: 1, max: 1500 }))
+			}
+		}).then(function () {
+			addCylinders();
 		});
 }
 
@@ -26,20 +39,17 @@ function addCylinders(data) {
 	localStorage.setItem('startTime', JSON.stringify(startTime));
 	console.log("threejs-startTime: " + startTime)
 
-	var xCord = new Chance();
-	var yCord = new Chance();
-
 	//bottom of sweden
-	for (var i = 0; i < 500; i++) {
+	for (var i = 0; i < 1000; i++) {
 		// Material Node
 		var mat = document.createElement('Material');
 		// Appearance Node
 		var app = document.createElement('Appearance');
 
-		if (data[i].year > 700) {
+		if (heightARR[i]> 700) {
 			mat.setAttribute('diffuseColor', red);
 			app.appendChild(mat);
-		} else if (data[i].year > 500) {
+		} else if (heightARR[i] > 500) {
 			mat.setAttribute('diffuseColor', yellow);
 			app.appendChild(mat);
 		} else {
@@ -50,7 +60,7 @@ function addCylinders(data) {
 		var t = document.createElement('Transform');
 		t.setAttribute(
 			'translation',
-			xCord.floating({ min: -5.8, max: -1.8 }) + ' -0.5 ' + yCord.floating({ min: -10.5, max: -3.5 })
+			seed.floating({ min: -5.8, max: -1.8 }) + ' -0.5 ' + seed.floating({ min: -10.5, max: -3.5 })
 		);
 		var s = document.createElement('Shape');
 
@@ -59,13 +69,14 @@ function addCylinders(data) {
 		t.appendChild(s);
 		var b = document.createElement('Cylinder');
 		b.setAttribute('radius', 0.01);
-		b.setAttribute('height', "0."+Math.round(data[i].year));
+		b.setAttribute('height', "0."+Math.round(heightARR[i]));
 		s.appendChild(b);
 
 		var ot = document.getElementById('root');
 		ot.appendChild(t);
 	}
 
+	/*
   //middle of sweden 1
 	for (var i = 500; i < 750; i++) {
 		// Material Node
@@ -174,7 +185,7 @@ function addCylinders(data) {
 
 		var ot = document.getElementById('root');
 		ot.appendChild(t);
-  }
+  }*/
 
   endTime = performance.now();
   localStorage.setItem('endTime', JSON.stringify(endTime));

@@ -3,7 +3,8 @@ WEBUG Bachelor thesis 2020
 
 # Dependencies - artefact 1
 
-ThreeJs ver.r114 - WebGl library for working with graphics in 2D/3D
+* ThreeJs ver.r114 - WebGl library for working with graphics in 2D/3D
+* chanceJs ver-1.4.1 - Minimalistic random generator
 
 # Dependencies - artefact 2
 
@@ -12,6 +13,6 @@ ThreeJs ver.r114 - WebGl library for working with graphics in 2D/3D
 
 # Dependencies - data formater
 
-- Python 3.8
-- Pandas
+* Python 3.8
+* Pandas
 
