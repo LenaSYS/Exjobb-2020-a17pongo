@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name     measureScript
+// @name measureScript
 // @version  1
 // @description performance test
 // @include     http://localhost/A17PONGO-EXJOBB2020/threejs_artefact/threejs.html
@@ -25,7 +25,7 @@ if (window.location.href.endsWith('threejs.html')) {
 function saveDatatoFile() {
 	console.log('Creating file to save measuredata to');
 	var data = localStorage.getItem('measure');
-	var blob = new Blob([ data ], { type: 'text/plain' });
+	var blob = new Blob([data], { type: 'text/plain' });
 	var url = window.URL.createObjectURL(blob);
 	var a = document.createElement('a');
 	a.href = url;
@@ -48,23 +48,25 @@ function saveMeasure() {
 
 window.addEventListener(
 	'load',
-	function() {
+	function () {
 		(async () => {
 			//console.log('startTimeGM ' + localStorage.getItem('startTime'));
 			//console.log('endTime ' + localStorage.getItem('endTime'));
 			var count = localStorage.getItem('count');
 			var runs = 10;
 
-			if(count == null ||count == '' || count == "NaN"){
+			if (count == null || count == '' || count == "NaN") {
 				count = 0;
 				localStorage.setItem('count', count)
 			}
 
 			if (count != runs) {
-				saveMeasure();
-				localStorage.setItem('count',++count);
-				console.log('count:' + count);
-				location.reload(true);
+				setTimeout(function () {
+					saveMeasure();
+					localStorage.setItem('count', ++count);
+					console.log('count:' + count);
+					location.reload(true);
+				}, 8000)
 			} else {
 				saveDatatoFile();
 				console.log('finished measuring, cleaning up');
