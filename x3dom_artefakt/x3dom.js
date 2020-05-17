@@ -35,9 +35,8 @@ function fetchData() {
 
 //function for dynamicly add cylinders to scene
 function addCylinders(data) {
-	startTime = performance.now();
-	localStorage.setItem('startTime', JSON.stringify(startTime));
-	console.log("threejs-startTime: " + startTime)
+	localStorage.setItem('startTime', performance.now());
+	console.log("threejs-startTime: " + performance.now())
 
 	//bottom of sweden
 	for (var i = 0; i < 1000; i++) {
@@ -187,9 +186,10 @@ function addCylinders(data) {
 		ot.appendChild(t);
   }*/
 
-  endTime = performance.now();
-  localStorage.setItem('endTime', JSON.stringify(endTime));
-  console.log("threejs-endTime: " + endTime)
+  localStorage.setItem('endTime', performance.now());
+  localStorage.setItem('timeSum', Math.round((localStorage.getItem('endTime')) - (localStorage.getItem("startTime"))));
+  console.log("threejs-endtime: " + performance.now());
+  console.log("delta: " + localStorage.getItem("timeSum"))
 }
 
 fetchData();

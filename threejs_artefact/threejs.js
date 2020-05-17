@@ -156,7 +156,9 @@ function addCylinders() {
 	}*/
 
 	localStorage.setItem('endTime', performance.now());
-	console.log("threejs-endtime: " + performance.now())
+	localStorage.setItem('timeSum', Math.round((localStorage.getItem('endTime')) - (localStorage.getItem("startTime"))));
+	console.log("threejs-endtime: " + performance.now());
+	console.log("delta: " + localStorage.getItem("timeSum"))
 }
 
 //Function for initiating scene configuration and starting to draw objects to scene
