@@ -87,13 +87,12 @@ function threejs_init() {
 
 //funktion for adding multiple Cylinder 3D objects to scene
 function addCylinders() {
-	startTime = performance.now();
-	localStorage.setItem('startTime', JSON.stringify(startTime));
-	console.log("threejs-startTime: " + startTime)
+	localStorage.setItem('startTime', performance.now());
+	console.log("threejs-startTime: " + performance.now())
 
 	var material;
 	//bottom of sweden, change the value compared to i depending on the amount of data you want to be writen to scene
-	for (var i = 0; i < 1500; i++) {
+	for (var i = 0; i < 1000; i++) {
 		if (heightARR[i] > 700) {
 			material = new THREE.MeshBasicMaterial({ color: red });
 		} else if (heightARR[i] > 500) {
@@ -156,9 +155,8 @@ function addCylinders() {
 		scene.add(cylinder);
 	}*/
 
-	endTime = performance.now();
-	localStorage.setItem('endTime', JSON.stringify(endTime));
-	console.log("threejs-endtime: " + endTime)
+	localStorage.setItem('endTime', performance.now());
+	console.log("threejs-endtime: " + performance.now())
 }
 
 //Function for initiating scene configuration and starting to draw objects to scene
