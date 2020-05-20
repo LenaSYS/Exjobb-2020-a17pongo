@@ -13,12 +13,11 @@ console.log('GM RUNNING');
 function saveDatatoFile() {
 	var artefact = '';
 
+	//sets the name of file == artefact that is running
 	if (window.location.href.endsWith('threejs.html')) {
 		artefact = 'Threejs';
-		//console.log(artefact);
 	} else if (window.location.href.endsWith('x3dom.html')) {
 		artefact = 'X3DOM';
-		//console.log(artefact);
 	}
 
 	//console.log('Creating file to save measuredata to');
@@ -37,15 +36,12 @@ function saveMeasure() {
 	var str = localStorage.getItem('measure');
 	str += ',' + localStorage.getItem('timeSum') + '\n';
 	localStorage.setItem('measure', str);
-	//console.log(localStorage.getItem('measure'));
 }
 
 window.addEventListener(
 	'load',
 	function () {
 		(async () => {
-			//console.log('startTimeGM ' + localStorage.getItem('startTime'));
-			//console.log('endTime ' + localStorage.getItem('endTime'));
 			var count = localStorage.getItem('count');
 			var runs = 10;
 
@@ -54,10 +50,11 @@ window.addEventListener(
 				localStorage.setItem('count', count)
 			}
 
+			console.log('count:' + count);
+
 			if (count != runs) {
 				setTimeout(function () {
 					saveMeasure();
-					console.log('count:' + count);
 					localStorage.setItem('count', ++count);
 					location.reload(true);
 				}, 3000)
@@ -69,7 +66,6 @@ window.addEventListener(
 				localStorage.setItem('startTime', '');
 				localStorage.setItem('endTime', '');
 				localStorage.clear();
-				console.log('count:' + localStorage.getItem('count'));
 			}
 		})();
 	},

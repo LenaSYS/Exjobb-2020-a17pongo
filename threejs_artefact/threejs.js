@@ -1,7 +1,6 @@
 console.log('Threejs artefact - running');
 
-// constant RGB color values for coloring cylinders depending on data value
-//Although should not, as of today, be seen as 100% accurate representing the data
+//Constant RGB color values for coloring cylinders depending on data value
 //RED: alot of data
 //yellow: medium amount of data
 //green: not alot of data
@@ -26,9 +25,10 @@ function fetchData() {
 				heightARR.push(item.year)
 			});
 		}).then(function () {
-			//adds wanted amount of values to heightArr representing the same data value year in dataset from SMHI
+			//adds wanted amount of values to heightArr 
+			//representing the same data value year in dataset from SMHI
 			//seed is used to get the same random numbers
-			for(var i=0; i<15460; i++){
+			for (var i = 0; i < 15460; i++) {
 				heightARR.push(seed.floating({ min: 1, max: 1500 }))
 			}
 		}).then(function () {
@@ -80,8 +80,6 @@ function threejs_init() {
 
 	animate();
 
-	//fetching data after scene is created and animated
-	//function then calls addCylinders function to write out wanted amount of cylinders to scene
 	fetchData();
 }
 

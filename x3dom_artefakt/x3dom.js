@@ -23,9 +23,10 @@ function fetchData() {
 				heightARR.push(item.year)
 			});
 		}).then(function () {
-			//adds wanted amount of values to heightArr representing the same data value year in dataset from SMHI
+			//adds wanted amount of values to heightArr 
+			//representing the same data value year in dataset from SMHI
 			//seed is used to get the same random numbers
-			for(var i=0; i<15460; i++){
+			for (var i = 0; i < 15460; i++) {
 				heightARR.push(seed.floating({ min: 1, max: 1500 }))
 			}
 		}).then(function () {
@@ -40,12 +41,11 @@ function addCylinders(data) {
 
 	//bottom of sweden
 	for (var i = 0; i < 1000; i++) {
-		// Material Node
 		var mat = document.createElement('Material');
-		// Appearance Node
+
 		var app = document.createElement('Appearance');
 
-		if (heightARR[i]> 700) {
+		if (heightARR[i] > 700) {
 			mat.setAttribute('diffuseColor', red);
 			app.appendChild(mat);
 		} else if (heightARR[i] > 500) {
@@ -68,7 +68,7 @@ function addCylinders(data) {
 		t.appendChild(s);
 		var b = document.createElement('Cylinder');
 		b.setAttribute('radius', 0.01);
-		b.setAttribute('height', "0."+Math.round(heightARR[i]));
+		b.setAttribute('height', "0." + Math.round(heightARR[i]));
 		s.appendChild(b);
 
 		var ot = document.getElementById('root');
@@ -186,10 +186,10 @@ function addCylinders(data) {
 		ot.appendChild(t);
   }*/
 
-  localStorage.setItem('endTime', performance.now());
-  localStorage.setItem('timeSum', Math.round((localStorage.getItem('endTime')) - (localStorage.getItem("startTime"))));
-  console.log("threejs-endtime: " + performance.now());
-  console.log("delta: " + localStorage.getItem("timeSum"))
+	localStorage.setItem('endTime', performance.now());
+	localStorage.setItem('timeSum', Math.round((localStorage.getItem('endTime')) - (localStorage.getItem("startTime"))));
+	console.log("threejs-endtime: " + performance.now());
+	console.log("delta: " + localStorage.getItem("timeSum"))
 }
 
 fetchData();
